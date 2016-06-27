@@ -1,7 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: andrei.drozd
- * Date: 6/22/2016
- * Time: 9:40 AM
- */
+class Config {
+    public static function get($path = null){
+        if ($path) {
+            $config = $GLOBALS['config'];
+            $path = explode('/', $path);
+            foreach ($path as $bit) {
+                if (isset($config[$bit])) {
+                    $config = $config[$bit];
+                }
+            }
+            return $config;
+        }
+        return false;
+    }
+}
+
